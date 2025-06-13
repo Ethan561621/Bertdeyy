@@ -2,115 +2,93 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Happy Birthday My Love!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Baby 🎂❤️</title>
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#ff3399">
+    <meta name="theme-color" content="#ff69b4">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #ffe6f0, #ffe6e6);
-            text-align: center;
+            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            background-color: #ffe6f0;
+            color: #333;
         }
-        .screen {
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+        .slider {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+        .slide {
             display: none;
-            padding: 30px;
+            width: 100%;
         }
         .active {
             display: block;
-            animation: fadeIn 1s;
         }
-        h1 {
-            color: #ff3399;
-            font-size: 36px;
-            animation: pulse 1.5s infinite;
-        }
-        p {
-            font-size: 20px;
-            color: #333;
-            margin: 20px;
-        }
-        img {
-            width: 80%;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
-            margin: 10px;
-            transition: all 0.5s ease;
-        }
-        button {
-            padding: 15px 30px;
-            font-size: 20px;
-            border: none;
-            border-radius: 10px;
-            background-color: #ff3399;
+        .arrow {
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
             color: white;
+            font-weight: bold;
+            font-size: 30px;
             cursor: pointer;
-            margin-top: 20px;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 50%;
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
+        .left { left: 0; }
+        .right { right: 0; }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Happy Birthday Baby ❤️🎂</h1>
+        <p>Mahal na mahal kita, sobra! Lagi kitang mamahalin anuman ang mangyari.  
+        Salamat sa pagiging pinakaespesyal na parte ng buhay ko.  
+        Sana maging masaya ka palagi at makamit mo lahat ng pangarap mo. ❤️  
+        </p>
 
-    <!-- Splash Screen -->
-    <div class="screen active" id="screen1">
-        <h1>🎉 Happy Birthday My Love 🎉</h1>
-        <button onclick="nextScreen(2)">Start</button>
-    </div>
+        <p>Hinding-hindi kita iiwan at palagi akong nasa tabi mo.  
+        Ikaw ang aking kaligayahan, ang aking inspirasyon, at ang aking forever.  
+        Happy Birthday ulit, baby ko 💖🥰</p>
 
-    <!-- Message Screen -->
-    <div class="screen" id="screen2">
-        <h1>💖 Message 💖</h1>
-        <p>Hi baby ko, sa espesyal mong kaarawan, gusto kong ipaalam sa'yo kung gaano kita kamahal. Kahit magkalayo tayo ngayon, lagi kang laman ng isip ko. Ang bawat ngiti mo, bawat tawa mo, at bawat simpleng 'I love you' mo ay nagbibigay saya sa bawat araw ko. Salamat sa walang sawang pagmamahal, pang-unawa, at suporta mo sa akin. Wala nang hihigit pa sa sayang dulot ng pagkakaroon ng isang katulad mong babae sa buhay ko.</p>
-
-        <p>Alam kong darating ang araw na mas makakasama na natin ang isa’t isa ng mas matagal, at sabay nating haharapin ang bawat hamon ng buhay. Sa ngayon, kahit online lang ang paraan ko para mapasaya ka, sana'y maramdaman mong buong puso kitang minamahal. Happy Birthday, baby ko. Lagi kitang iingatan sa puso ko. ❤️</p>
-
-        <button onclick="nextScreen(3)">Next</button>
-    </div>
-
-    <!-- Photos Screen -->
-    <div class="screen" id="screen3">
-        <h1>📸 Our Memories 📸</h1>
-        <div id="slider">
-            <img id="slideImage" src="https://i.ibb.co/tPQsJvmn/Screenshot-2025-06-09-09-45-54-244.jpg" alt="Photo 1">
+        <div class="slider">
+            <img class="slide active" src="https://i.ibb.co/tPQsJvmn/Screenshot-2025-06-09-09-45-54-244.jpg" alt="Image 1">
+            <img class="slide" src="https://i.ibb.co/BKPCRxpY/Screenshot-2025-05-27-09-13-48-743.jpg" alt="Image 2">
+            <img class="slide" src="https://i.ibb.co/Cp0XQN3f/Screenshot-2025-06-06-09-50-15-379.jpg" alt="Image 3">
+            <a class="arrow left" onclick="plusSlides(-1)">❮</a>
+            <a class="arrow right" onclick="plusSlides(1)">❯</a>
         </div>
-        <button onclick="nextSlide()">➡️ Next</button>
     </div>
 
     <script>
-        function nextScreen(n) {
-            document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
-            document.getElementById('screen' + n).classList.add('active');
-        }
-
         let slideIndex = 0;
-        const slides = [
-            "https://i.ibb.co/tPQsJvmn/Screenshot-2025-06-09-09-45-54-244.jpg",
-            "https://i.ibb.co/Cp0XQN3f/Screenshot-2025-06-06-09-50-15-379.jpg",
-            "https://i.ibb.co/BKPCRxpY/Screenshot-2025-05-27-09-13-48-743.jpg"
-        ];
-
-        function nextSlide() {
-            slideIndex = (slideIndex + 1) % slides.length;
-            document.getElementById('slideImage').src = slides[slideIndex];
+        const slides = document.getElementsByClassName("slide");
+        function showSlides(n) {
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            slides[n].classList.add("active");
         }
-
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('service-worker.js');
-            });
+        function plusSlides(n) {
+            slideIndex = (slideIndex + n + slides.length) % slides.length;
+            showSlides(slideIndex);
         }
     </script>
 
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+            .then(reg => console.log('Service worker registered.', reg))
+            .catch(err => console.log('Service worker failed: ', err));
+        }
+    </script>
 </body>
 </html>
