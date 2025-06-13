@@ -1,16 +1,24 @@
-self.addEventListener('install', e => {
-  console.log('Service Worker Installed');
-  e.waitUntil(
-    caches.open('static').then(cache => {
-      return cache.addAll(['./index.html', './manifest.json']);
-    })
+const CACHE_NAME = 'birthday-app-cache-v1';
+const urlsToCache = [
+  './',
+  './index.html'
+];
+
+self.addEventListener('install', function(event) {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
   );
 });
 
-self.addEventListener('fetch', e => {
-  e.respondWith(
-    caches.match(e.request).then(response => {
-      return response || fetch(e.request);
-    })
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function(response) {
+        return response || fetch(event.request);
+      })
   );
 });
